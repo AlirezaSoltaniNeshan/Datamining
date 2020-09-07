@@ -48,7 +48,7 @@ def listMinkowskiRecommendation(users, username):
     distances.sort()
     return distances
 
-
+# -------------PEARSON ALGORITHM SECTION------------------
 # Sometimes we cann't use from some algorithm like Minkowski or Manhattan or etc
 # because some users may be uncurrect rate to any music albums or any product
 # so we use form Pearson algorithm
@@ -99,8 +99,8 @@ def usersBottom(user):
     userSumSection2 = pow(userSumSection2, 2) / len(user)
 
     final = userSumSection1 - userSumSection2
-    pow(final, 1/2)
-    return final
+    finalPower = pow(final, 1/2)
+    return finalPower
 
 
 # Main function of Pearson to link any section of formula
@@ -109,14 +109,17 @@ def pearsonRecommedation(user1, user2):
     # Top is صورت
     userMulti = getMultiplicationPearson(user1, user2)
     userDummy = getDummy(user1, user2)
+    # Top results
+    finalTop = userMulti - userDummy # is very good result!
 
-    finalTop = userMulti - userDummy
     # Bottom is مخرج
     bottomUser1 = usersBottom(user1)
     bottomUser2 = usersBottom(user2)
-
+    # Bottom results
     finalBottom = bottomUser1 * bottomUser2
+
     # The Final Result is
     result = finalTop / finalBottom
+    return round(result)
 
-    return result
+# -------------PEARSON ALGORITHM SECTION------------------
